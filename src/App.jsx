@@ -1,8 +1,14 @@
+import {ThemeProvider} from 'styled-components';
+import GlobalStyles, {Theme} from './components/GlobalStyles';
+
+import Home from './pages/Home';
+
 function App() {
   return (
-    <div className="App">
-      <h1>Hello Reignited</h1>
-    </div>
+    <ThemeProvider theme={Theme} className="App">
+      <GlobalStyles />
+      <Home />
+    </ThemeProvider>
   );
 }
 
