@@ -6,7 +6,8 @@ export const Theme = {
   primary: '#ffffff',
   secondary: '',
   accent: '#901e1e',
-  background: '#5d434d',
+  background: '#512f30',
+  overlay: 'rgba(0,0,0,0.5)',
   text: '#2c2b2b',
   nav: '',
 };
@@ -35,6 +36,9 @@ const GlobalStyles = createGlobalStyle`
     &::-webkit-scrollbar-thumb {
       background-color: ${props => props.theme.accent}
     }
+    &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.primary};
+  }
   }
 
   body {

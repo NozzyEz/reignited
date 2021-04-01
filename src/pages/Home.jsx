@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
@@ -9,16 +10,23 @@ import {loadGames} from '../actions/gamesAction';
 
 // Components
 import GameCard from '../components/GameCard';
+import GameDetail from '../components/GameDetail';
 
 function Home() {
+  const location = useLocation();
+  const path = location.pathname.split('/')[2];
+  console.log(path);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadGames());
   }, [dispatch]);
 
   const {popularGames, newGames, upcomingGames} = useSelector(store => store.games);
+  const selected = useSelector(store => store.detail);
   return (
     <GameList>
+      {path && <GameDetail />}
       <h2>Upcoming Games</h2>
       <Games>
         {upcomingGames.map(game => (
