@@ -7,11 +7,9 @@ import {motion} from 'framer-motion';
 import {useDispatch} from 'react-redux';
 import {loadGameDetails} from '../actions/detailAction.js';
 
-function GameCard({game}) {
-  const title = game.name;
-  const released = game.released;
-  const image = game.background_image;
+import {resizeImage} from '../util';
 
+function GameCard({game}) {
   const dispatch = useDispatch();
   const loadDetailsHandler = () => {
     document.body.style.overflow = 'hidden';
@@ -19,18 +17,22 @@ function GameCard({game}) {
   };
 
   return (
-    <Card onClick={loadDetailsHandler}>
+    <Card onClick={loadDetailsHandler} layoutId={game.id}>
       <Link to={`/game/${game.id}`}>
-        <h3>{title}</h3>
-        <p>{released}</p>
-        <img src={image} alt={title} />
+        <h3>{game.name}</h3>
+        <p>{game.released}</p>
+        <motion.img
+          src={resizeImage(game.background_image, 640)}
+          alt={game.name}
+          layoutId={`img_${game.id}`}
+        />
       </Link>
     </Card>
   );
 }
 
 const Card = styled(motion.div)`
-  height: 40vh;
+  height: 40rem;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 0.5rem;

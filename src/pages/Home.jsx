@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
 import styled from 'styled-components';
-import {motion} from 'framer-motion';
+import {motion, AnimatePresence, AnimateSharedLayout} from 'framer-motion';
 
 // Redux
 import {useDispatch, useSelector} from 'react-redux';
@@ -15,7 +15,8 @@ import GameDetail from '../components/GameDetail';
 function Home() {
   const location = useLocation();
   const path = location.pathname.split('/')[2];
-  console.log(path);
+  // console.log('from Home:');
+  // console.log(parseInt(path));
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,28 +24,30 @@ function Home() {
   }, [dispatch]);
 
   const {popularGames, newGames, upcomingGames} = useSelector(store => store.games);
-  const selected = useSelector(store => store.detail);
+  // const selected = useSelector(store => store.detail);
   return (
     <GameList>
-      {path && <GameDetail />}
-      <h2>Upcoming Games</h2>
-      <Games>
-        {upcomingGames.map(game => (
-          <GameCard game={game} key={game.id} />
-        ))}
-      </Games>
-      <h2>New Games</h2>
-      <Games>
-        {newGames.map(game => (
-          <GameCard game={game} key={game.id} />
-        ))}
-      </Games>
-      <h2>Popular Games</h2>
-      <Games>
-        {popularGames.map(game => (
-          <GameCard game={game} key={game.id} />
-        ))}
-      </Games>
+      <AnimateSharedLayout type="crossfade">
+        <AnimatePresence>{path && <GameDetail id={parseInt(path)} />}</AnimatePresence>
+        <h2>Upcoming Games</h2>
+        <Games>
+          {upcomingGames.map(game => (
+            <GameCard game={game} key={game.id} />
+          ))}
+        </Games>
+        <h2>New Games</h2>
+        <Games>
+          {newGames.map(game => (
+            <GameCard game={game} key={game.id} />
+          ))}
+        </Games>
+        <h2>Popular Games</h2>
+        <Games>
+          {popularGames.map(game => (
+            <GameCard game={game} key={game.id} />
+          ))}
+        </Games>
+      </AnimateSharedLayout>
     </GameList>
   );
 }

@@ -1,6 +1,6 @@
 // const auth = process.env.REACT_APP_RAWG_AUTH;
 const base_url = 'https://api.rawg.io/api';
-const pageSize = 10;
+const pageSize = 24;
 const auth = process.env.REACT_APP_RAWG_AUTH;
 
 const getCurrentYear = () => {
