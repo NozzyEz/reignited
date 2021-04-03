@@ -4,7 +4,7 @@ import AbrilFatFace from '../fonts/AbrilFatface-Regular.ttf';
 
 export const Theme = {
   primary: '#ffffff',
-  secondary: '',
+  secondary: '#5a1a1a',
   accent: '#901e1e',
   background: '#512f30',
   overlay: 'rgba(0,0,0,0.5)',
@@ -48,7 +48,8 @@ const GlobalStyles = createGlobalStyle`
   }
   
   h1 {
-    font-size: 2.8rem
+    font-size: 3rem;
+    font-family: 'Abril Fatface';
   }
   h2 {
     font-size: 3.2rem;
@@ -69,6 +70,21 @@ const GlobalStyles = createGlobalStyle`
   }
   ul {
     list-style: none;
+  }
+  button {
+    font-size: 2rem;
+    border: none;
+    padding: 0.8rem 3.2rem;
+    background-color: ${props => props.theme.background};
+    color: ${props => props.theme.primary};
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+    color: ${props => props.theme.background};
+    background-color: ${props => props.theme.primary};
+
+    }
+
   }
 `;
 

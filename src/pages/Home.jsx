@@ -13,18 +13,22 @@ import GameCard from '../components/GameCard';
 import GameDetail from '../components/GameDetail';
 
 function Home() {
+  // Use location read from the url we're on, which lets the app know whether to render the GameDetail
+  // Component by etracting the ID from the url if there is one.
   const location = useLocation();
   const path = location.pathname.split('/')[2];
   // console.log('from Home:');
   // console.log(parseInt(path));
 
+  // Dispatching an action to Redux to download the data from the API
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadGames());
   }, [dispatch]);
 
+  // Fetching the data from Redux
   const {popularGames, newGames, upcomingGames} = useSelector(store => store.games);
-  // const selected = useSelector(store => store.detail);
+
   return (
     <GameList>
       <AnimateSharedLayout type="crossfade">
@@ -53,7 +57,8 @@ function Home() {
 }
 
 const GameList = styled(motion.div)`
-  padding: 0rem 5rem;
+  margin: 0rem 5rem;
+  margin-bottom: 3rem;
   h2 {
     padding: 5rem 0rem;
     color: ${props => props.theme.primary};

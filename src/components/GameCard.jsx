@@ -13,6 +13,7 @@ function GameCard({game}) {
   const dispatch = useDispatch();
   const loadDetailsHandler = () => {
     document.body.style.overflow = 'hidden';
+    // tell redux to get the game's details and screenshots
     dispatch(loadGameDetails(game.id));
   };
 
