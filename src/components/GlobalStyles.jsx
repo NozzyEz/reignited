@@ -72,9 +72,10 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
   button {
+    font-family: 'Montserrat';
     font-size: 2rem;
     border: none;
-    padding: 0.8rem 3.2rem;
+    padding: 0.6rem 3.2rem;
     background-color: ${props => props.theme.background};
     color: ${props => props.theme.primary};
     outline: none;
@@ -82,7 +83,9 @@ const GlobalStyles = createGlobalStyle`
     &:hover {
     color: ${props => props.theme.background};
     background-color: ${props => props.theme.primary};
-
+    }
+    &:focus {
+      outline: black solid 1px;
     }
 
   }

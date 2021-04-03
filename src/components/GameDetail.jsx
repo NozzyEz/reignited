@@ -181,7 +181,7 @@ const Platforms = styled(motion.div)`
   justify-content: space-evenly;
   img {
     /* margin-left: 1rem; */
-    width: 2.8rem;
+    width: 3rem;
   }
 `;
 const Media = styled(motion.div)`

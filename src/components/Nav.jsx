@@ -1,10 +1,15 @@
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
+import logo from '../img/logo.svg';
+
 function Nav() {
   return (
     <Navbar>
-      <h1>Reignitined</h1>
+      <Title>
+        <img src={logo} alt="logo" />
+        <h1>Reignitined</h1>
+      </Title>
       <Search>
         <input type="text" />
         <button>Search</button>
@@ -19,13 +24,25 @@ const Navbar = styled(motion.div)`
   justify-content: center;
   flex-direction: column;
   color: ${props => props.theme.primary};
-  min-height: 8vh;
+  height: 12vh;
   width: 100%;
   background-color: ${props => props.theme.secondary};
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4);
   position: sticky;
   top: 0;
   padding: 1rem;
+`;
+
+const Title = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 22rem;
+  margin-bottom: 1.5rem;
+  img {
+    width: 5rem;
+  }
 `;
 
 const Search = styled(motion.div)`
@@ -41,6 +58,12 @@ const Search = styled(motion.div)`
     padding: 0.2rem;
     outline: none;
     margin-right: 2rem;
+    border: 1px solid black;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
+    font-family: 'Montserrat';
+    &:focus {
+      outline: black solid 1px;
+    }
   }
 `;
 

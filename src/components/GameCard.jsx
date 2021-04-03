@@ -45,7 +45,7 @@ const Card = styled(motion.div)`
   }
   img {
     width: 100%;
-    height: 40vh;
+    min-height: 42vh;
     object-fit: cover;
     padding-top: 1rem;
   }
