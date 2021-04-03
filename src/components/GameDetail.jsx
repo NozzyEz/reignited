@@ -1,13 +1,14 @@
 import {useHistory} from 'react-router-dom';
-
 import styled from 'styled-components';
 import {motion} from 'framer-motion';
 
 // redux
 import {useSelector} from 'react-redux';
 
+// util function that takes a url and returns a url that produces a lower resolution image
 import {resizeImage} from '../util';
 
+// Platform icons
 import appleIcon from '../img/apple.svg';
 import linuxIcon from '../img/linux.svg';
 import pcIcon from '../img/steam.svg';
@@ -15,15 +16,15 @@ import gamepadIcon from '../img/gamepad.svg';
 import switchIcon from '../img/nintendo.svg';
 import xboxIcon from '../img/xbox.svg';
 import psIcon from '../img/playstation.svg';
-
+// Stars used for ratings
 import starFull from '../img/star-full.png';
 import starEmpty from '../img/star-empty.png';
 
-// import Description from './Description';
-
 function GameDetail({id}) {
+  // Get the details and screenshots about the game from Redux
   const {game, screenshots, isLoading} = useSelector(store => store.detail);
   const history = useHistory();
+  // Parse the id to a number to keep it consistent, we need to do this for animation purposes
   const parsedId = parseInt(id);
 
   //* handles what happens when we click outside the details card
