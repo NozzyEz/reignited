@@ -20,7 +20,7 @@ function GameCard({game}) {
   return (
     <Card onClick={loadDetailsHandler} layoutId={game.id}>
       <Link to={`/game/${game.id}`}>
-        <motion.img
+        <CardImage
           src={resizeImage(game.background_image, 640)}
           alt={game.name}
           layoutId={`img_${game.id}`}
@@ -45,12 +45,13 @@ const Card = styled(motion.div)`
   display: flex;
   flex-direction: column;
   text-align: start;
-  img {
-    width: 100%;
-    height: 80%;
-    object-fit: cover;
-    /* padding-top: 1rem; */
-  }
+`;
+
+const CardImage = styled(motion.img)`
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
+  /* padding-top: 1rem; */
 `;
 
 const CardInfo = styled(motion.div)`

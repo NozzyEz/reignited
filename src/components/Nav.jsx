@@ -1,18 +1,35 @@
+import {useState} from 'react';
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
 import logo from '../img/logo.svg';
 
+import {loadSearch} from '../actions/gamesAction';
+import {useDispatch} from 'react-redux';
+
 function Nav() {
+  const dispatch = useDispatch();
+  const [input, setInput] = useState('');
+
+  //* Hanlde search from input
+  const inputHandler = e => {
+    setInput(e.target.value);
+  };
+
+  const submitSearchHandler = e => {
+    e.preventDefault();
+    dispatch(loadSearch(input));
+    setInput('');
+  };
   return (
     <Navbar>
       <Title>
         <img src={logo} alt="logo" />
         <h1>Reignitined</h1>
       </Title>
-      <Search>
-        <input type="text" />
-        <button>Search</button>
+      <Search onSubmit={submitSearchHandler}>
+        <input value={input} onChange={inputHandler} type="text" />
+        <button type="submit">Search</button>
       </Search>
     </Navbar>
   );
@@ -45,7 +62,7 @@ const Title = styled(motion.div)`
   }
 `;
 
-const Search = styled(motion.div)`
+const Search = styled(motion.form)`
   display: flex;
   align-items: center;
   justify-content: space-between;

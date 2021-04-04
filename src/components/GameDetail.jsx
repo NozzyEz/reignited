@@ -16,6 +16,8 @@ import gamepadIcon from '../img/gamepad.svg';
 import switchIcon from '../img/nintendo.svg';
 import xboxIcon from '../img/xbox.svg';
 import psIcon from '../img/playstation.svg';
+import iosIcon from '../img/ios.svg';
+import androidIcon from '../img/android.svg';
 // Stars used for ratings
 import starFull from '../img/star-full.png';
 import starEmpty from '../img/star-empty.png';
@@ -53,6 +55,10 @@ function GameDetail({id}) {
         return switchIcon;
       case 'Linux':
         return linuxIcon;
+      case 'iOS':
+        return iosIcon;
+      case 'Android':
+        return androidIcon;
       default:
         return gamepadIcon;
     }

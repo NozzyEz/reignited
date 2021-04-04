@@ -27,12 +27,18 @@ function Home() {
   }, [dispatch]);
 
   // Fetching the data from Redux
-  const {popularGames, newGames, upcomingGames} = useSelector(store => store.games);
+  const {popularGames, newGames, upcomingGames, searched} = useSelector(store => store.games);
 
   return (
     <GameList>
       <AnimateSharedLayout type="crossfade">
         <AnimatePresence>{path && <GameDetail id={parseInt(path)} />}</AnimatePresence>
+        <h2>Search results</h2>
+        <Games>
+          {searched.map(game =>
+            game.background_image ? <GameCard game={game} key={game.id} /> : ''
+          )}
+        </Games>
         <h2>Upcoming Games</h2>
         <Games>
           {upcomingGames.map(game =>

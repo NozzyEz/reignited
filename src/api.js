@@ -27,5 +27,9 @@ export const newGamesURL = () =>
   `${base_url}/games?dates=${lastYear},${currentDate}&ordering=-released&page_size=${pageSize}&key=${auth}`;
 export const upcommingGamesURL = () =>
   `${base_url}/games?dates=${currentDate},${nextYear}&ordering=-added&page_size=${pageSize}&key=${auth}`;
+
 export const gameDetailsURL = game_id => `${base_url}/games/${game_id}`;
 export const gameScreenshotsURL = game_id => `${base_url}/games/${game_id}/screenshots?key=${auth}`;
+
+export const searchGameURL = game_name =>
+  `${base_url}/games?search=${game_name}&page_size=9&key=${auth}`;
