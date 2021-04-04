@@ -33,12 +33,16 @@ function Home() {
     <GameList>
       <AnimateSharedLayout type="crossfade">
         <AnimatePresence>{path && <GameDetail id={parseInt(path)} />}</AnimatePresence>
-        <h2>Search results</h2>
-        <Games>
-          {searched.map(game =>
-            game.background_image ? <GameCard game={game} key={game.id} /> : ''
-          )}
-        </Games>
+        {searched.length !== 0 && (
+          <>
+            <h2>Search results</h2>
+            <Games>
+              {searched.map(game =>
+                game.background_image ? <GameCard game={game} key={game.id} /> : ''
+              )}
+            </Games>
+          </>
+        )}
         <h2>Upcoming Games</h2>
         <Games>
           {upcomingGames.map(game =>
@@ -72,9 +76,9 @@ const GameList = styled(motion.div)`
 `;
 
 const Games = styled(motion.div)`
-  min-height: 80vh;
+  /* min-height: 80vh; */
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
 `;

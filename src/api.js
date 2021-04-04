@@ -32,4 +32,4 @@ export const gameDetailsURL = game_id => `${base_url}/games/${game_id}`;
 export const gameScreenshotsURL = game_id => `${base_url}/games/${game_id}/screenshots?key=${auth}`;
 
 export const searchGameURL = game_name =>
-  `${base_url}/games?search=${game_name}&page_size=9&key=${auth}`;
+  `${base_url}/games?search=${game_name}&page_size=${pageSize}&key=${auth}`;
