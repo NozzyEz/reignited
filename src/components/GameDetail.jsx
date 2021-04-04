@@ -36,7 +36,7 @@ function GameDetail({id}) {
     // if it is, make main page scrollable and change the url to the root to reflect that we're closed
     if (isShadow) {
       document.body.style.overflow = 'auto';
-      history.push('/');
+      history.push('./');
     }
   };
 

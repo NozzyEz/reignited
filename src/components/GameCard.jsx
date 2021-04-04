@@ -19,7 +19,7 @@ function GameCard({game}) {
 
   return (
     <Card onClick={loadDetailsHandler} layoutId={game.id}>
-      <Link to={`/game/${game.id}`}>
+      <Link to={`./game/${game.id}`}>
         <CardImage
           src={resizeImage(game.background_image, 640)}
           alt={game.name}
