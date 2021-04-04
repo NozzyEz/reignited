@@ -47,7 +47,7 @@ const Card = styled(motion.div)`
   text-align: start;
   img {
     width: 100%;
-    height: 30vh;
+    height: 80%;
     object-fit: cover;
     /* padding-top: 1rem; */
   }
