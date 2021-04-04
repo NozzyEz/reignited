@@ -35,21 +35,21 @@ function Home() {
         <AnimatePresence>{path && <GameDetail id={parseInt(path)} />}</AnimatePresence>
         <h2>Upcoming Games</h2>
         <Games>
-          {upcomingGames.map(game => (
-            <GameCard game={game} key={game.id} />
-          ))}
+          {upcomingGames.map(game =>
+            game.background_image ? <GameCard game={game} key={game.id} /> : ''
+          )}
         </Games>
         <h2>New Games</h2>
         <Games>
-          {newGames.map(game => (
-            <GameCard game={game} key={game.id} />
-          ))}
+          {newGames.map(game =>
+            game.background_image ? <GameCard game={game} key={game.id} /> : ''
+          )}
         </Games>
         <h2>Popular Games</h2>
         <Games>
-          {popularGames.map(game => (
-            <GameCard game={game} key={game.id} />
-          ))}
+          {popularGames.map(game =>
+            game.background_image ? <GameCard game={game} key={game.id} /> : ''
+          )}
         </Games>
       </AnimateSharedLayout>
     </GameList>

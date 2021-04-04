@@ -78,7 +78,7 @@ function GameDetail({id}) {
                 <p>Rating: {ratingsHandler(game.rating)}</p>
                 <p>{game.rating}</p>
               </Ratings>
-              <Info>
+              <PlatformsContainer>
                 <h3>Platforms</h3>
                 <Platforms>
                   {game.parent_platforms.map(index => (
@@ -89,23 +89,39 @@ function GameDetail({id}) {
                     />
                   ))}
                 </Platforms>
-              </Info>
+              </PlatformsContainer>
             </Stats>
-            <Media>
+            <SplashImage>
               <motion.img
                 src={resizeImage(game.background_image, 1280)}
                 alt={game.name}
                 layoutId={`img_${parsedId}`}
               />
-            </Media>
-            <DescriptionContainer>
-              <h4>Description:</h4>
-              <div dangerouslySetInnerHTML={{__html: game.description}}></div>
-            </DescriptionContainer>
+            </SplashImage>
+            <InfoContainer>
+              <Info>
+                {game.developers && game.developers.length !== 0 && (
+                  <h4>Developer: {game.developers[0].name}</h4>
+                )}
+                {game.publishers && game.publishers.length !== 0 && (
+                  <h4>Publisher: {game.publishers[0].name}</h4>
+                )}
+                {game.tba && <h4>Released: TBA</h4>}
+                {game.released && <h4>Released: {game.released}</h4>}
+                {game.esrb_rating && <h4>ESRB: {game.esrb_rating.name}</h4>}
+                {!game.esrb_rating && <h4>ESRB: None</h4>}
+              </Info>
+              <Description>
+                <h4>Description:</h4>
+                <p>
+                  <div dangerouslySetInnerHTML={{__html: game.description}}></div>
+                </p>
+              </Description>
+            </InfoContainer>
             <Gallery>
               {screenshots.map(screenshot => (
                 <img
-                  src={resizeImage(screenshot.image, 1280)}
+                  src={resizeImage(screenshot.image, 640)}
                   alt={`screenshot from ${game.name}`}
                   key={screenshot.id}
                 />
@@ -139,6 +155,7 @@ const CardShadow = styled(motion.div)`
 `;
 
 const Detail = styled(motion.div)`
+  min-height: 90%;
   width: 80%;
   border-radius: 1rem;
   padding: 2rem 5rem;
@@ -170,28 +187,40 @@ const Ratings = styled(motion.div)`
   }
 `;
 
-const Info = styled(motion.div)`
+const PlatformsContainer = styled(motion.div)`
   text-align: center;
   padding: 1rem;
-  min-width: 40rem;
+  /* min-width: 40rem; */
 `;
 
 const Platforms = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
   img {
-    /* margin-left: 1rem; */
+    margin: 0rem 2rem;
     width: 3rem;
   }
 `;
-const Media = styled(motion.div)`
+const SplashImage = styled(motion.div)`
   margin-top: 5rem;
+  text-align: center;
   img {
-    width: 100%;
+    width: 90%;
   }
 `;
-const DescriptionContainer = styled(motion.div)`
-  margin: 5rem 0rem;
+const InfoContainer = styled(motion.div)`
+  display: flex;
+  align-items: flex-start;
+  margin: 3rem 0rem;
+`;
+const Info = styled(motion.div)`
+  flex: 1 1 200rem;
+  h4 {
+    margin-bottom: 1rem;
+  }
+`;
+const Description = styled(motion.div)`
+  flex: 1 1 200rem;
   h3 {
     margin-top: 1rem;
     font-size: 1.8rem;
@@ -201,9 +230,13 @@ const DescriptionContainer = styled(motion.div)`
   }
 `;
 const Gallery = styled(motion.div)`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   img {
-    width: 100%;
-    margin-bottom: 2rem;
+    width: 25%;
+    object-fit: cover;
+    margin: 2rem 1rem;
   }
 `;
 

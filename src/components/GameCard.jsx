@@ -20,35 +20,47 @@ function GameCard({game}) {
   return (
     <Card onClick={loadDetailsHandler} layoutId={game.id}>
       <Link to={`/game/${game.id}`}>
-        <h3>{game.name}</h3>
-        <p>{game.released}</p>
         <motion.img
           src={resizeImage(game.background_image, 640)}
           alt={game.name}
           layoutId={`img_${game.id}`}
         />
+        <CardInfo>
+          <h3>{game.name}</h3>
+          <p>{game.released}</p>
+        </CardInfo>
       </Link>
     </Card>
   );
 }
 
 const Card = styled(motion.div)`
-  height: 40rem;
+  height: 45rem;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   text-align: center;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   background-color: ${props => props.theme.primary};
   overflow: hidden;
   cursor: pointer;
-  h3 {
-    padding: 1.5rem;
-  }
+  display: flex;
+  flex-direction: column;
+  text-align: start;
   img {
     width: 100%;
-    min-height: 42vh;
+    height: 30vh;
     object-fit: cover;
-    padding-top: 1rem;
+    /* padding-top: 1rem; */
   }
+`;
+
+const CardInfo = styled(motion.div)`
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
 `;
 
 export default GameCard;

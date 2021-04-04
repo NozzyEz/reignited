@@ -24,7 +24,7 @@ const Navbar = styled(motion.div)`
   justify-content: center;
   flex-direction: column;
   color: ${props => props.theme.primary};
-  height: 12vh;
+  min-height: 12vh;
   width: 100%;
   background-color: ${props => props.theme.secondary};
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4);
